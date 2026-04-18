@@ -1,3 +1,11 @@
+from fastapi.middleware.cors import CORSMiddleware
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # later restrict
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 from fastapi import Header
 from auth import create_token, verify_token
 from auth import router as auth_router
@@ -11,7 +19,7 @@ from fastapi import FastAPI, File, UploadFile
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel
-from database import collection
+from database import files_collection, users_collection
 
 from ai.search import search_files
 from ai.tagging import generate_tags
@@ -65,7 +73,7 @@ async def upload_file(file: UploadFile = File(...), authorization: str = Header(
 
     tags = generate_tags(content)
 
-    collection.insert_one({
+    files_collection.insert_one({
         "filename": file.filename,
         "path": file_path,
         "tags": tags,
@@ -113,6 +121,6 @@ def delete_file(filename: str):
         raise HTTPException(status_code=404, detail="File not found")
 
     # Delete from MongoDB
-    collection.delete_one({"filename": filename})
+    files_collection.delete_one({"filename": filename})
 
     return {"message": "File deleted successfully"}

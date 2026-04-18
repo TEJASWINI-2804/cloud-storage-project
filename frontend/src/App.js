@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./App.css";
 
 function App() {
+  const BASE_URL = "https://cloud-storage-backend.onrender.com";
   const [token, setToken] = useState("");
   const [file, setFile] = useState(null);
   const [query, setQuery] = useState("");
@@ -23,7 +24,7 @@ function App() {
   const formData = new FormData();
   formData.append("file", file);
 
- await fetch("http://127.0.0.1:8000/upload/", {
+ await fetch("https://cloud-storage-backend.onrender.com/upload/", {
   method: "POST",
   headers: {
     Authorization: token
@@ -36,7 +37,7 @@ function App() {
 
  const handleSearch = async () => {
   try {
-    const res = await fetch(`http://127.0.0.1:8000/search/?query=${query}`, {
+    const res = await fetch(`https://cloud-storage-backend.onrender.com/search/?query=${query}`, {
     headers: {
     Authorization: token
   }
@@ -51,7 +52,7 @@ function App() {
 };
 const handleDelete = async (filename) => {
   try {
-    await fetch(`http://127.0.0.1:8000/delete/${filename}`, {
+    await fetch(`https://cloud-storage-backend.onrender.com/delete/${filename}`, {
       method: "DELETE",
     });
 
@@ -65,7 +66,7 @@ const handleDelete = async (filename) => {
 };
 
 const handleSignup = async () => {
-  await fetch("http://127.0.0.1:8000/signup", {
+  await fetch("https://cloud-storage-backend.onrender.com/signup", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ username, password }),
@@ -77,7 +78,7 @@ const handleSignup = async () => {
 const handleLogin = async () => {
   console.log("Login clicked");
 
-  const res = await fetch("http://127.0.0.1:8000/login", {
+  const res = await fetch("https://cloud-storage-backend.onrender.com/login", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ username, password })
@@ -143,7 +144,7 @@ const handleLogin = async () => {
 
                {/* ✅ ADD THIS IMAGE */}
               <img
-                src={`http://127.0.0.1:8000/files/${item.filename}`}
+                src={`http://cloud-storage-backend.onrender.com/files/${item.filename}`}
                 alt="preview"
                 width="150"
               />
@@ -151,7 +152,7 @@ const handleLogin = async () => {
               <p>{item.tags?.join(", ")}</p>
 
               <a
-                href={`http://127.0.0.1:8000/download/${item.filename}`}
+                href={`http://cloud-storage-backend.onrender.com/download/${item.filename}`}
                 target="_blank"
                 rel="noreferrer"
               >

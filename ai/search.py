@@ -1,7 +1,7 @@
-from database import collection
+from database import files_collection
 
 def search_files(query):
-    results = list(collection.find({}))
+    results = list(files_collection.find({}))
 
     filtered = []
     for item in results:
