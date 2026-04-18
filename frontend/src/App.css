@@ -1,0 +1,89 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f6f8;
+  margin: 0;
+}
+
+/* Header */
+h1 {
+  text-align: center;
+  background: #007bff;
+  color: white;
+  padding: 15px;
+  margin: 0;
+}
+
+/* Container */
+.container {
+  padding: 20px;
+}
+
+/* Upload & Search */
+.upload-box, .search-box {
+  text-align: center;
+  margin: 20px;
+}
+
+input {
+  padding: 8px;
+  margin: 5px;
+  width: 200px;
+}
+
+button {
+  padding: 8px 12px;
+  margin: 5px;
+  border: none;
+  background: #007bff;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #0056b3;
+}
+
+/* Grid Layout */
+.results {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 20px;
+  padding: 20px;
+}
+
+/* Card */
+.card {
+  background: white;
+  border-radius: 12px;
+  padding: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  text-align: center;
+}
+
+.card img {
+  width: 100%;
+  height: 140px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.preview-pdf {
+  width: 100%;
+  height: 150px;
+}
+
+/* Buttons inside card */
+.card button {
+  margin-top: 5px;
+}
+
+.login-box {
+  text-align: center;
+  margin: 20px;
+}
+
+.login-box input {
+  margin: 5px;
+  padding: 8px;
+}
