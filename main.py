@@ -10,7 +10,7 @@ from database import files_collection
 from auth import create_token, verify_token, router as auth_router
 from ai.search import search_files
 from ai.tagging import generate_tags
-
+from fastapi import FastAPI
 # ✅ Create app FIRST
 app = FastAPI()
 
